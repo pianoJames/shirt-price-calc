@@ -12,8 +12,12 @@
         }
       }
     </script>
-    
-    <div id="app">{{ message }}</div>
+    <h1>Obviously unfinished shirt price calculator</h1>
+    <div id="app">
+    	Number of shirts: <input :value="text" @input="onInput" placeholder="Type here">
+  		<p>Price: ${{ text * 15}}</p>
+	
+    </div>
     
     <script type="module">
       import { createApp } from 'vue'
@@ -21,7 +25,13 @@
       createApp({
         data() {
           return {
-            message: 'Hello Vue!'
+            text: 0
+          }
+        },
+        methods: {
+          onInput(e) {
+            const stuff = e.target.value.length == 0 ? 0 : e.target.value
+            this.text = parseInt(stuff, 10);
           }
         }
       }).mount('#app')
